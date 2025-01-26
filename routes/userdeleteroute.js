@@ -1,5 +1,5 @@
 const express = require("express");
-const { deleteUser, deleteEducation, deleteExperience } = require("../database/queries.js");
+const { deleteUser, deleteEducation, deleteExperience } = require("../database/db_queries.js");
 const router = express.Router();
 const fs=require("fs");
 // DELETE endpoint to delete user, education, experience data by ID
