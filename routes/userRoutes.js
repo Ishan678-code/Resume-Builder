@@ -1,5 +1,5 @@
 const express = require("express");
-const { insertUser, insertEducation, insertExperience } = require("../database/queries.js");
+const { insertUser, insertEducation, insertExperience } = require("../database/db_queries.js");
 
 const router = express.Router();
 
