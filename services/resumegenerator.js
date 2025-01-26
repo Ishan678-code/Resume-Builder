@@ -17,6 +17,7 @@ function generatePDF(data, pdfdoc) {
   pdfdoc.text(`Email: ${data.user.email || "N/A"}`);
   pdfdoc.moveDown(1);
 
+  
   pdfdoc
     .font("Helvetica-Bold")
     .fontSize(18)

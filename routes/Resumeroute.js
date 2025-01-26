@@ -2,7 +2,7 @@ const express = require("express");
 const fs=require("fs");
 const router = express.Router();
 const { generatePDF } = require("../services/resumegenerator");
-const { getUserById, getEducationById, getExperienceById } = require("../database/queries");
+const { getUserById, getEducationById, getExperienceById } = require("../database/db_queries");
 
 const pdfDocument = require("pdfkit");
 
