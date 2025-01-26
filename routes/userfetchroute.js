@@ -4,7 +4,7 @@ const {
   getUserById,
   getEducationById,
   getExperienceById,
-} = require("../database/queries");
+} = require("../database/db_queries");
 
 const router = express.Router();
 
