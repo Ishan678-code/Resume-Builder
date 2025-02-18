@@ -1,33 +1,50 @@
-async function viewdata() {
+async function viewData() {
   try {
-  
-  const url=document.URL;
-  const url2=url.split('?')[1];
-  const id = new URLSearchParams(url2);
-  let userid=0;
-  for(let key of id.entries()){
+    // Extract the user id from URL query parameters
+    const url = document.URL;
+    const queryString = url.split('?')[1];
+    const params = new URLSearchParams(queryString);
+    let userid = 0;
+    for (let [key, value] of params.entries()) {
+      userid = value;
+    }
 
-    userid=key[1];
-  }
-
+    // Fetch data from your API endpoint
     const response = await fetch(`http://localhost:8000/submit/${userid}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
 
     if (response.ok) {
-      const userData = await response.json(); // Parse the JSON response from the server
+      const userData = await response.json();
       console.log("User Data:", userData);
 
-      // Check if data is not empty or undefined
-      if (userData) {
-        // Display the user data in the pre element
-        const preElement = document.getElementById("viewDetails");
-        preElement.textContent = JSON.stringify(userData,null,2);
-      } else {
-        console.error("No data available.");
-        alert("No user data found.");
-      }
+      // Format the data as desired.
+      // Adjust the property names as per your actual data structure.
+      const formattedData = `
+Name : ${userData.userDetails.name},
+Email : ${userData.userDetails.email},
+Phone : ${userData.userDetails.phone},
+Address : ${userData.userDetails.address},
+Brief_Description : ${userData.userDetails.brief_description || 'N/A'},
+Skills : ${userData.experienceDetails.skills},
+
+Education Details {
+School Name : ${userData.educationDetails.school},
+Level : ${userData.educationDetails.level},
+Year : ${userData.educationDetails.year},
+},
+
+Work Details {
+Company : ${userData.experienceDetails.company},
+Position : ${userData.experienceDetails.position},
+Duties : ${userData.experienceDetails.duties},
+Work Year : ${userData.experienceDetails.work_year},
+}
+      `;
+
+      // Display the formatted data inside the <pre> element
+      document.getElementById("viewDetails").innerText = formattedData;
     } else {
       console.error("Error fetching user data.");
       alert("User not found.");
@@ -36,11 +53,3 @@ async function viewdata() {
     console.error("Error:", error);
   }
 }
-
-
-
-
-
-
-
-
