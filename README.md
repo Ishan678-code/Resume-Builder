@@ -9,6 +9,7 @@ This is a web application which builds resume based on the user details.
 
 # General View
 
-![image](https://github.com/user-attachments/assets/72676366-bde1-4367-ac19-d888aeb1cb3a)
+![image](https://github.com/user-attachments/assets/ba839c21-8220-4441-b6f3-adb90f9be584)
+
 
 
